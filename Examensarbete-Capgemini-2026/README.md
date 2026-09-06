@@ -69,3 +69,5 @@ Examensarbete-Capgemini-2026/
 ## Status
 
 Examensarbetet är genomfört under vårterminen 2026. Koden i detta repo är ett urval av kärnfunktionaliteten (säker kommunikation) från det fullständiga systemet.
+
+Fullständig rapport publicerad på DiVA: [Läs examensarbetet](https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A2072275)
