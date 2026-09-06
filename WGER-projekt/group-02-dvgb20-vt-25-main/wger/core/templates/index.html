@@ -1,0 +1,119 @@
+{% extends "base_wide.html" %}
+{% load i18n static wger_extras %}
+
+{% block title %}{% translate "Dashboard" %}{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row align-items-center" style="margin-top: 20px;">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6 text-end">
+                <p style="margin: 0;">Welcome!</p>
+                <p style="margin: 0;">{{ user.username }}</p>
+                <p id="clock" style="margin: 0;"></p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-sm-6 col-md-4">
+                <div id="react-routine-dashboard"></div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div id="react-nutrition-dashboard"></div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div id="react-weight-dashboard"></div>
+            </div>
+             <div class="col-sm-6 col-md-4">
+                <div id="rand-exercise"></div>
+               <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    let container = document.getElementById("rand-exercise");
+                    
+                    container.innerHTML = `<div class="card"><div class="card-body"> {% translate "Loading exercise..." %}</div></div>`;
+                    fetch("/api/v2/exerciseinfo/?limit=900")
+                    .then(res => res.json())
+                    .then(data => {
+                        const exercises = data.results; 
+                        console.log(exercises);
+                        const random = exercises[Math.floor(Math.random() * exercises.length)];
+                        console.log(random);
+                        let index=0;
+                        let i =0;
+                        for(i =0; i < random.translations.length; i++)
+                        {
+                            if(random.translations[i].language ==2 )
+                            {
+                                console.log(i);
+                                index =i;
+                                break;
+                            }
+                        }
+
+                        
+                        container.innerHTML = `
+                        <div class="card">
+                        <div class="card-header">
+                        <h5>Try this exercise:</h5>
+                        
+                            <h4>${random.translations[index].name}</h4>
+                        </div>
+                        <div class="card-body">
+                            <h7>{% translate "Description" %} </h7>
+                            <p>${random.translations[i].description} </p>
+                            <h7>{% translate "Muscles" %} </h7>
+                            <ul id="muscles">
+                                
+                            </ul>
+                             <h7>{% translate "Equipment" %} </h7>
+                            <ul id="Equipment">
+                                
+                            </ul>
+                        </div>
+                        <a href="../exercise/${random.id}/view/${random.translations[0].name.replace(/\s+/g, '-')}">{% translate "View Exercise" %}</a>
+                        </div>`;
+
+
+                        let musclesList = document.getElementById("muscles");
+                        for(let k =0; k < random.muscles.length; k++)
+                        {
+                            let li = document.createElement("li");
+                            li.textContent = random.muscles[k].name;
+                            musclesList.appendChild(li);
+                        }
+
+                        let EqList = document.getElementById("Equipment");
+                        for(let k =0; k < random.equipment.length; k++)
+                        {
+                            let li = document.createElement("li");
+                            li.textContent = random.equipment[k].name;
+                            EqList.appendChild(li);
+                        }
+                            
+                       
+                    })
+                    
+
+                });
+               </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = hours + ':' + minutes;
+            document.getElementById('clock').innerText = timeString;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+{% endblock %}

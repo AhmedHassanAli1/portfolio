@@ -1,0 +1,192 @@
+[
+{
+  "model": "authuser.customuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$VUM7PBesXhdmWHq4kKtQbb$YPV0QslflhatLiFyiw9lcoiiPELy5DKjV8GNbNjJl6o=",
+    "last_login": "2025-11-04T14:04:21.928Z",
+    "email": "admin@admin.com",
+    "username": "admin",
+    "fullname": "admin",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": true,
+    "is_active": true,
+    "is_superuser": true,
+    "role": 1,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authuser.customuser",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$bvYfrAw160da8BIKZ1NvVR$+Bcv8IeeM1EEFD0DPOVLqoCRYug4bSOvxX3ESODlm8o=",
+    "last_login": null,
+    "email": "email@email.com",
+    "username": "staff",
+    "fullname": "00000",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": true,
+    "is_active": true,
+    "is_superuser": false,
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authuser.customuser",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$dlLen21HmB36MeZL4SyAkz$36OoEofNzCOTEOI4KGGQfUS1gvS3zn9OchAhDmXf2kk=",
+    "last_login": null,
+    "email": "email@em.com",
+    "username": "student",
+    "fullname": "student",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": false,
+    "is_active": true,
+    "is_superuser": false,
+    "role": 3,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authuser.customuser",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$q4kxkPIBvp6jj58mA4D9nn$xrFWyPUiHq4oidp+kFwFSiakFpUPK/6rnrV1dtEIhik=",
+    "last_login": null,
+    "email": "andersros@gmail.com",
+    "username": "andros100",
+    "fullname": "00000",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": true,
+    "is_active": true,
+    "is_superuser": false,
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authuser.customuser",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$d3NceFDgLEsiNnxGcX6AHY$fuKt/jYKy/ue62zRVhVsXUcp/rc3k5zt31XuSTlQJGQ=",
+    "last_login": null,
+    "email": "caj.rollny@kau.se",
+    "username": "cajrol100",
+    "fullname": "Caj Rollny",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": true,
+    "is_active": true,
+    "is_superuser": false,
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authuser.customuser",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$NMaiO2K9sjCIyRlAhQjDm0$ee8NG8QrOiaGc8Ibj52EEtcertFkDTQZiD3C5r2+mTw=",
+    "last_login": null,
+    "email": "jonathan.vestin@kau.se",
+    "username": "jonvest100",
+    "fullname": "00000",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": true,
+    "is_active": true,
+    "is_superuser": true,
+    "role": 1,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authuser.customuser",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$JfIkSnSc5KaVnXmEL7t4zp$estToUT9lcb8AoNGbAgWYnD6Q03EcOSvw62QFp6cui4=",
+    "last_login": null,
+    "email": "user1@email.com",
+    "username": "username1",
+    "fullname": "00000",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": false,
+    "is_active": true,
+    "is_superuser": false,
+    "role": 3,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authuser.customuser",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$KcVeLfS19WGWM9vYze93lb$tFGpRqye1ogTUZMYoBQ1rl3pM5Lf9pkAQKUXrDZOufc=",
+    "last_login": null,
+    "email": "user2@email.com",
+    "username": "username2",
+    "fullname": "00000",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": false,
+    "is_active": true,
+    "is_superuser": false,
+    "role": 3,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authuser.customuser",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$ApkkagBLxSY8LKFv04vvJD$vlMnbgCJM7ASCEv8fHzkivhqZh5mGO/73kSTWAMrG6g=",
+    "last_login": null,
+    "email": "pub1@email.com",
+    "username": "pub1",
+    "fullname": "00000",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": true,
+    "is_active": true,
+    "is_superuser": false,
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "authuser.customuser",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$nfE6YgZUUmYhiWCcYf1JUQ$mESdSIgrTnr3wTbP/aayugUr/kSdpWKI8gqiLTcBhp4=",
+    "last_login": null,
+    "email": "pub2@email.com",
+    "username": "pub2",
+    "fullname": "00000",
+    "organization": "False",
+    "telephone": null,
+    "is_staff": true,
+    "is_active": true,
+    "is_superuser": false,
+    "role": 2,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

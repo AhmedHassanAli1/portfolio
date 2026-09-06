@@ -1,0 +1,530 @@
+{% load static %}
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>KAU News & Events</title>
+
+  <!-- Nunito Sans font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito Sans', sans-serif;
+      background-color: #ffffff;
+      color: #000;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      background-color: #f0cf00;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #000;
+    }
+
+    /* Hero / Title section */
+    .hero {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .hero event{
+      font-size: 2.2rem;
+      color: #555;
+      text-align: center;
+    }
+    .hero news{
+      font-size: 2.2rem;
+      color: #555;
+      text-align: center;
+
+    }
+
+    /* Filter*/
+    .filters {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+    }
+
+ .filteroptions{
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .filters input,
+    .filters select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+    .column-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 1rem auto;
+  padding: 0.75rem;
+  background-color: #f0cf00;
+  border-radius: 8px;
+  color: #000;
+  max-width: 80%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+    /* Cards*/
+   
+   .row {
+    display: flex
+  }
+  .newscoloumn {
+     
+    flex : 50%;
+  }
+  .eventcoloumn {
+     flex : 50%;
+   }
+    .newscontainer
+     {
+      max-width: 80%;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      gap: 2rem;
+     }
+      
+    .eventcontainer {
+      max-width: 80%;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      gap: 2rem;
+    }
+
+
+    .eventcard,
+    .newscard {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      width: 80%;
+      min-width: 350px;
+    }
+
+   /* .card h2 {
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }*/
+
+    .tags {
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f0cf00;
+      color: #000;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      margin-right: 0.25rem;
+    }
+    .departments {
+      margin-bottom: 1rem;
+    }
+    .department {
+      display: inline-block;
+      background: #00ccf0;
+      color: #000;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      margin-right: 0.25rem;
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: #f0cf00;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+       details {
+  border: 1px solid #767676;
+  border-radius: 3px;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 3px 6px;
+}
+.details_departments summary::marker {
+  display: none;
+  font-size: 0;
+}
+
+
+.details_departments summary::after {
+  content: "\25BC" / "";
+  display: inline-block;
+  font-size: 0.6rem;
+  height: 1rem;
+  line-height: 1rem;
+  margin-left: 0.5rem;
+  position: relative;
+  transition: transform 0.25s;
+}
+
+.details_departments[open] summary {
+  margin-bottom: 1rem;
+}
+
+.details_departments > summary {
+  list-style: none;
+}
+.details_departments > summary::marker {
+  display: none;
+}
+.details_departments div {
+ position: absolute;
+}
+
+.details_departments[open] summary::after {
+  top: -0.15rem;
+  transform: rotate(180deg);
+}
+
+form {
+  display: flex;
+}
+
+fieldset {
+  display: flex;
+  border: 0;
+  padding: 0;
+  width: 100%;
+}
+
+fieldset legend {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-style: solid;
+  border-radius: 1px;
+  border-color: #555;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+ul li {
+  border-radius: 3px;
+  margin: 0;
+  padding: 4px 2px;
+  background: #fff;
+}
+
+
+ul li:hover {
+  background: #eee;
+}
+
+ul li label {
+  flex-grow: 0;
+  justify-content: space-between;
+}
+.hidden {
+  display: none;
+}
+button {
+      background: #f0cf00;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #e5c700;
+    }
+
+    .event-title-container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .event-title-container > h2,p{
+      margin: 0;
+    }
+    .rec-symbol{
+      color: forestgreen;
+      font-size: 35px;
+      margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <img src="{% static 'kau-logo.png' %} " style="width: 38px;">
+    <!--<img src="example-logo.png" alt="Example Logo"-->
+  </div>
+  <nav>
+
+    <a href="{% url 'calendarevents_view' %}">Events Calendar</a>
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'publication_events' %}">Publish Event</a>
+    <a href="{% url 'publication_news' %}">Publish News</a>
+    <a href="{% url 'logout' %}">Log out</a>
+    {% else %}
+
+    <a href="{% url 'login' %}">Log in</a>
+    <a href="{% url 'register' %}">Registration</a>
+    {% endif %}
+
+    {% if user.is_authenticated and user.is_staff %}
+    <a href= "{% url 'staffuser' %}">Publisher overview</a>
+  
+    {% endif %}
+
+    {% if user.is_superuser %}
+    <a href="{% url 'admin:index' %}">Admin view</a>
+    {% endif %} 
+    
+
+    
+
+    
+
+  </nav>
+</header>
+
+<section class="hero">
+    <h1>News & Events at Karlstad University</h1>
+    <p>Stay updated with the latest news and upcoming events at KAU.</p>
+</section>
+
+<section class="filters">
+ <!--Sökfunktion-->
+ <section class="filter">
+  <form method="get" action="{% url 'index' %}" class="filters">
+   <input type="text" name="q" placeholder="🔍 Search news or events..." value="{{ request.GET.q }}">
+   <button type="submit">Search</button>
+ </form>
+ <section class="filteroptions">
+   <details class="details_departments">
+     <summary>Departments</summary>
+     <div>
+ 
+       <ul>
+         {%for department in departments%}
+         <li>
+           <input type="checkbox" name="{{department.DepName}}" id="filter_dep_{{department.DepID}}" data-filter_department="{{department.DepName}}" checked>
+           <label for="filter_dep_{{department.DepID}}">{{department.DepName}}</label>
+         </li>
+         {%endfor%}
+       </ul>
+     </div>
+     </details>
+   <details class="details_departments">
+     <summary>Tags</summary>
+     <div>
+ 
+       <ul>
+         {%for tag in tags%}
+         <li>
+           <input type="checkbox" name="{{tag.TagName}}" id="filter_tag_{{tag.TagID}}" data-filter_tag="{{tag.TagName}}" checked>
+           <label for="filter_tag_{{tag.TagID}}">{{tag.TagName}}</label>
+         </li>
+         {%endfor%}
+       </ul>
+     </div>
+     </details>
+   </section>
+ </section>
+ </section>
+  {%if messages%}
+  {%for message in messages%}
+    {% if message.tags == "success" %}
+      <div style="max-width: 500px; margin: 0 auto; padding: 1rem; background-color: #d9f5df; border: 1px solid #3da700; border-radius: 8px; color: #3da700; text-align: center;">
+    {% elif message.tags == "error" %}
+      <div style="max-width: 500px; margin: 0 auto; padding: 1rem; background-color: #ffdddd; border: 1px solid #ff5c5c; border-radius: 8px; color: #a70000; text-align: center;">
+    {% endif %}
+        {{message}}
+    </div>
+  {%endfor%}
+{%endif%}
+<main class="row">
+  <div class="newscoloumn">
+    <h2 class="column-title">News</h2>
+    {% for news in news %}
+      <div class="newscontainer">
+        <article class="newscard">
+          <div class="tags">
+            {% for tag in news.Tag.all %}
+              <span class="tag" data-tag="{{tag.TagName}}">{{tag.TagName}}</span> 
+            {% endfor %}
+          </div>
+          <div class="departments">
+            {% for Department in news.Department.all %}
+              <span class="department" data-department="{{Department.DepName}}">{{Department.DepName}}</span>
+            {% endfor %}
+          </div>
+          <h2>{{ news.NewsTitle }}</h2>
+          <p class="meta">{{ news.Author }} | {{ news.Organization }}</p>
+          <p>{{ news.NewsDesc | truncatechars:50}}</p>
+          <a href="{% url 'read_more' id=news.News_PublicationID %}?type=news" style="font-weight:600; text-decoration:none;">Read More →</a>      </div>
+    {% endfor %}
+  </div>
+
+  <div class="eventcoloumn">
+    <h2 class="column-title">Events</h2>
+    {% for event in events %}
+      <div class="eventcontainer">
+        <article class="eventcard">
+          <div class="tags">
+            {% for tag in event.Tag.all %}
+              <span class="tag" data-tag="{{tag.TagName}}">{{tag.TagName}}</span>
+            {% endfor %}
+          </div>
+          <div class="departments">
+            {% for Department in event.Department.all %}
+              <span class="department" data-department="{{Department.DepName}}">{{Department.DepName}}</span>
+            {% endfor %}
+          </div>
+          <div class="event-title-container">
+            <h2>{{ event.EventTitle }}</h2>
+            {% if event.is_recurring %}
+              <p class="rec-symbol">&#8634;</p>
+            {% endif %}
+          </div>
+          <p class="meta">{{ event.Author }} | {{ event.Organization }}</p>
+          <p>{{ event.EventDesc | truncatechars:50}}</p>
+          <p>
+            {{ event.EventStartDate }} - {{ event.EventEndDate }} at {{ event.EventStartTime }} to {{ event.EventEndTime }}
+            <h4>Participant: {{ event.attendees.count }}</h4>
+          <a href="{% url 'read_more' id=event.Event_PublicationID %}?type=event" style="font-weight:600; text-decoration:none;">Read More →</a>        </article>
+      </div>
+    {% endfor %}
+  </div>
+</main>
+
+
+<footer>
+  © 2025 Karlstads Universitet – News & Events
+</footer>
+<script>
+  addEventListener("load", (event) => {
+    let checkboxes = document.querySelectorAll('[data-filter_department], [data-filter_tag]')
+    for (let checkbox of checkboxes){
+      checkbox.addEventListener("click", filter)
+    }
+  })
+  
+  function filter(){
+    filter_clear()
+    
+    let tag_checkboxes = document.querySelectorAll('[data-filter_tag]')
+    let checked_tags = Array.from(tag_checkboxes).filter(cb => cb.checked).map(cb => cb.getAttribute('data-filter_tag'))
+    
+    let dep_checkboxes = document.querySelectorAll('[data-filter_department]')
+    let checked_departments = Array.from(dep_checkboxes).filter(cb => cb.checked).map(cb => cb.getAttribute('data-filter_department'))
+    
+    let cards = document.querySelectorAll('.eventcard, .newscard')
+    
+    for (let card of cards){
+      let should_hide = false
+      
+  if(checked_tags.length === 0 || checked_departments.length === 0){
+    let containers = document.querySelectorAll('.newscontainer, .eventcontainer')
+    for(let container of containers){
+      container.classList.add("hidden")
+    }
+    return  
+  }
+
+      if(checked_departments.length > 0){
+        let card_departments = card.querySelectorAll('[data-department]')
+        let card_dep_values = Array.from(card_departments).map(el => el.getAttribute('data-department'))
+        let has_dep_match = card_dep_values.some(value => checked_departments.includes(value))
+        
+        if(!has_dep_match){
+          should_hide = true
+        }
+      }
+      
+      if(should_hide){
+        card.parentElement.classList.add("hidden")
+      }
+    }
+  }
+  
+  function filter_clear(){
+    let containers = document.querySelectorAll('.newscontainer, .eventcontainer')
+    for (let container of containers){
+      container.classList.remove("hidden")
+    }
+  }
+  </script>
+</body>
+</html>

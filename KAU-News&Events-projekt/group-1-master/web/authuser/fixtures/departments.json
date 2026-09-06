@@ -1,0 +1,83 @@
+[
+{
+  "model": "authuser.department",
+  "pk": 1,
+  "fields": {
+    "DepName": "Computer Science",
+    "staff": [
+      6,
+      7,
+      8,
+      11
+    ]
+  }
+},
+{
+  "model": "authuser.department",
+  "pk": 2,
+  "fields": {
+    "DepName": "Mathematics",
+    "staff": [
+      5,
+      7,
+      8
+    ]
+  }
+},
+{
+  "model": "authuser.department",
+  "pk": 3,
+  "fields": {
+    "DepName": "Informatics",
+    "staff": [
+      4,
+      3
+    ]
+  }
+},
+{
+  "model": "authuser.department",
+  "pk": 4,
+  "fields": {
+    "DepName": "Music",
+    "staff": [
+      8,
+      3
+    ]
+  }
+},
+{
+  "model": "authuser.department",
+  "pk": 5,
+  "fields": {
+    "DepName": "Economy",
+    "staff": [
+      9,
+      11
+    ]
+  }
+},
+{
+  "model": "authuser.department",
+  "pk": 6,
+  "fields": {
+    "DepName": "History",
+    "staff": [
+      10,
+      11
+    ]
+  }
+},
+{
+  "model": "authuser.department",
+  "pk": 7,
+  "fields": {
+    "DepName": "Language",
+    "staff": [
+      10,
+      11,
+      3
+    ]
+  }
+}
+]

@@ -1,0 +1,334 @@
+<style>
+  *{
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #ffffff;
+    color: #000;
+  }
+
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    background-color: #f0cf00;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  header img {
+    height: 40px;
+  }
+
+  nav a {
+    margin-left: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: #000;
+    transition: 0.3s ease;
+  }
+
+  nav a:hover {
+    color: #333;
+    text-decoration: underline;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 2rem;
+    padding-bottom: 0;
+  }
+
+  .calendar-container {
+    max-width: 900px;
+    width: 70%;
+    height: 100%;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 2px solid #f0cf00;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    background-color: #f0cf00;
+    color: #000;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #000;
+    font-weight: 600;
+  }
+
+  td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: right;
+    height: 80px;
+    vertical-align: top;
+    background-color: #fff;
+    transition: background 0.2s ease;
+  }
+
+  td:hover {
+    background-color: #fff6cc;
+  }
+
+  .month-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 10px;
+  }
+
+  .month-nav a {
+    padding: 8px 14px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    background-color: #fff;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .month-nav a:hover {
+    background-color: #f0cf00;
+  }
+
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 1rem;
+    background-color: #f0cf00;
+    color: #000;
+    font-size: 0.9rem;
+  }
+
+  .event-dot {
+    width: 23px;
+    height: 23px;
+    margin: 2px auto 0;
+    border-radius: 70%;
+    background-color: red;
+  }
+
+  .event-count {
+    margin: auto;
+    text-align: center;
+    color: red;
+  }
+
+  .event-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 4px;
+  }
+
+  .main-container {
+    display: flex;
+    margin: 40px;
+  }
+  .event-container {
+    width: 30%;
+    height: 591px;
+    max-height: 591px;
+    margin-left: 3%;
+
+  }
+  .day-display{
+    height: 5%;
+  }
+  .day-a{
+    text-decoration: none;
+    color: #000;
+  }
+
+  tr > td{
+    height: 92px;
+    width: 108px;
+  }
+
+  .event-display {
+    height: calc(95% - 40px);
+    overflow-y: scroll;
+    
+    padding: 20px;
+    background: #f9f9f9;
+    border: 2px solid #f0cf00;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  .marked{
+    background-color: lightyellow;
+  }.marked{
+    background-color: lightyellow;
+  } 
+  .eventcard,
+  .newscard {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    width: 80%;
+    min-width: 350px;
+  }
+  .tags {
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f0cf00;
+      color: #000;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      margin-right: 0.25rem;
+    }
+    .departments {
+      margin-bottom: 1rem;
+    }
+    .department {
+      display: inline-block;
+      background: #00ccf0;
+      color: #000;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      margin-right: 0.25rem;
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    .event-title-container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .event-title-container > h2,p{
+      margin: 0;
+    }
+    .rec-symbol{
+      color: forestgreen;
+      font-size: 35px;
+      margin-right: 20px;
+    }
+</style>
+{% load static %}
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ month }} {{ year }} – Karlstad University Calendar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<header>
+  <div class="logo-area">
+    <img src="{% static 'kau-logo.png' %}" alt="KAU Logo">
+  </div>
+  <nav>
+    <a href="{% url 'index' %}">News Feed</a>
+
+    {% if user.is_authenticated %}
+      <a href="{% url 'publication_events' %}">Publish Event</a>
+      <a href="{% url 'publication_news' %}">Publish News</a>
+      <a href="{% url 'logout' %}">Log out</a>
+    {% else %}
+      <a href="{% url 'login' %}">Log in</a>
+      <a href="{% url 'register' %}">Registration</a>
+    {% endif %}
+
+    {% if user.is_authenticated and user.is_staff %}
+      <a href="{% url 'staffuser' %}">Publisher overview</a>
+    {% endif %}
+
+    {% if user.is_superuser %}
+      <a href="{% url 'admin:index' %}">Admin view</a>
+    {% endif %}
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>{{ month }} {{ year }} – Karlstad University Calendar</h1>
+</section>
+
+<div class="month-nav">
+  <a href="/calendarevents/{{ previousYear }}/{{ previous_monthName }}">Previous month</a>
+  <a href="/calendarevents/{{ nextYear }}/{{ next_monthName }}">Next month</a>
+</div>
+<div class="main-container">
+  <div class="calendar-container">
+    {{ CalendarHTML|safe }}
+  </div>
+  <div class="event-container">
+    <h2 class="day-display">
+      {% if day %}
+        Events during {{ day }} {{ month }}
+      {% else %}
+        Select day to view events
+      {% endif %}
+    </h2>
+    <div class="event-display">
+      {% for entry in day_events %}
+      <div class="eventcontainer">
+        <article class="eventcard">
+          <div class="tags">
+            {% for tag in entry.event.Tag.all %}
+            <span class="tag" data-tag="{{tag.TagName}}">{{tag.TagName}}</span>
+            {% endfor %}
+          </div>
+          <div class="departments">
+            {% for Department in entry.event.Department.all %}
+            <span class="department" data-department="{{Department.DepName}}">{{Department.DepName}}</span>
+            {% endfor %}
+          </div>
+          <div class="event-title-container">
+            <h2>{{ entry.event.EventTitle }}</h2>
+            {% if entry.event.is_recurring %}
+              <p class="rec-symbol">&#8634;</p>
+            {% endif %}
+          </div>
+          <p class="meta">{{ entry.event.Author }} | {{ entry.event.Organization }}</p>
+          <p>{{ entry.event.EventDesc | truncatechars:50}}</p>
+          <p>
+            {{ entry.start }} - {{ entry.end }}
+          <a href="{% url 'read_more' id=entry.event.Event_PublicationID %}?type=event" style="font-weight:600; text-decoration:none;">Read More →</a>        </article>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+<script>
+  window.addEventListener("load",()=>{
+    let td = document.querySelector('[data-day=' + '"{{day}}"]')
+    td.classList.add("marked")
+  })
+</script>
+
+<footer>
+  © {{ year }} Karlstads Universitet – Calendar
+</footer>
+</body>
+</html>

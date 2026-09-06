@@ -1,0 +1,9 @@
+# Hemliga nycklar - checka aldrig in den riktiga config.py
+src/config.py
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store

@@ -1,0 +1,8 @@
+.venv
+**/.DS_Store
+**/*.log
+**/*.log.*
+**/*.pyc
+postgres-data
+media/
+event_files/

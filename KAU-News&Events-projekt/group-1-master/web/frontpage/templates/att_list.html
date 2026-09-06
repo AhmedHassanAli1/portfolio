@@ -1,0 +1,234 @@
+{% load static %}
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>KAU News & Events</title>
+
+  <!-- Nunito Sans font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito Sans', sans-serif;
+      background-color: #ffffff;
+      color: #000;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      background-color: #f0cf00;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #000;
+    }
+
+    /* Hero / Title section */
+    .hero {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+  
+    /* Cards*/
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 0;
+      width: 80%;
+    }
+
+    .card h2 {
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+
+
+    .meta {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    table thead th {
+      background-color: #f0cf00;
+      font-weight: 600;
+      color: #000;
+    }
+
+    table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    table tbody tr:hover {
+      background-color: #f0f0f0;
+    }
+
+    footer {
+      background-color: #f0cf00;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    details {
+  border: 1px solid #767676;
+  border-radius: 3px;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 3px 6px;
+}
+
+button {
+      background: #f0cf00;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #e5c700;
+    }
+  
+    .btn-secondary {
+      background: #ccc;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <img src="{% static 'kau-logo.png' %} " style="width: 38px;">
+    <!--<img src="example-logo.png" alt="Example Logo"-->
+  </div>
+  <nav>
+    <a href="{% url 'index' %}">News Feed</a>
+    
+    {% if user.is_authenticated %}
+    <a href="{% url 'publication_events' %}">Publish Event</a>
+    <a href="{% url 'publication_news' %}">Publish News</a>
+    <a href="{% url 'logout' %}">Log out </a>
+    {% else %}
+    <a href="{% url 'login' %}">Log in </a>
+    {% endif %}
+    {% if user.is_staff %}
+    <a href="{% url 'staffuser' %}">Publisher overview</a>
+    {% endif %}
+
+    {% if user.is_superuser %}
+    <a href="{% url 'admin:index' %}">Admin view</a>
+    {% endif %}
+  
+  </nav>
+</header>
+
+<main class="container">
+  <article class="card">
+    <h2>Attendance List for: {{ event.EventTitle }}</h2>
+    <p class="meta">{{ event.Organization }} | {{ event.EventStartDate }} - {{ event.EventEndDate }}</p>
+    <p class="meta">Location: {{event.Location}}</p>
+
+    {%if attendees%}
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Allergies</th>
+            <th>Dietary Preferences</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for attendee in attendees %}
+          <tr>
+            <td>{{attendee.user.fullname}}</td>
+            <td>{{attendee.user.email}}</td>
+            <td>{% if attendee.allergies %}{{attendee.allergies}}{% endif %}</td>
+            <td>{% if attendee.dietary_preferences %}{{attendee.dietary_preferences}}{% endif %}</td>
+            <td>{% if attendee.notes %}{{attendee.notes}}{% endif %}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    {%else%}
+      <p>No attendees registered for this event</p>
+    {%endif%}
+    
+    <div style="margin-top: 2rem;">
+      <a href="{% url 'read_more' event.Event_PublicationID %}?type=event">
+        <button type="button">Back to Event</button>
+      </a>
+    </div>
+  </article>
+</main>
+
+  
+ 
+</main>
+
+<footer>
+  © 2025 Karlstads Universitet – News & Events
+</footer>
+
+</body>
+</html>

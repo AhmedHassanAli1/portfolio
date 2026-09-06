@@ -1,0 +1,226 @@
+{% load static %}
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>KAU Events – Attendance</title>
+
+  <!-- Nunito Sans font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito Sans', sans-serif;
+      background-color: #ffffff;
+      color: #000;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      background-color: #f0cf00;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #000;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* Event layout */
+    .eventcoloumn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .eventcontainer {
+      width: 80%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .eventcard {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      width: 80%;
+      min-width: 350px;
+    }
+
+    .tags, .departments {
+      margin-bottom: 0.75rem;
+    }
+
+    .tag, .department {
+      display: inline-block;
+      background: #f0cf00;
+      color: #000;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      margin-right: 0.25rem;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background: #f0cf00;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #e5c700;
+    }
+
+    .btn-secondary {
+      background: #ccc;
+      color: #000;
+    }
+
+    footer {
+      background-color: #f0cf00;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <img src="{% static 'kau-logo.png' %}" alt="KAU Logo" style="width:38px;">
+  </div>
+  <nav>
+    <a href="{% url 'index' %}">News Feed</a>
+    <a href="{% url 'calendarevents_view' %}">Events Calendar</a>
+
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'publication_events' %}">Publish Event</a>
+    <a href="{% url 'publication_news' %}">Publish News</a>
+    <a href="{% url 'logout' %}">Log out</a>
+    {% else %}
+      <a href="{% url 'login' %}">Log in</a>
+      <a href="{% url 'register' %}">Registration</a>
+    {% endif %}
+
+    {% if user.is_authenticated and user.is_staff %}
+      <a href="{% url 'staffuser' %}">Staff overview</a>
+    {% endif %}
+
+    {% if user.is_superuser %}
+      <a href="{% url 'admin:index' %}">Admin view</a>
+    {% endif %}
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Event Registration </h1>
+  <p>Here you can register for upcoming events or view the ones you are already attending.</p>
+</section>
+{%for message in messages%}
+    <div style="max-width: 500px; margin: 0 auto; padding: 1rem; background-color: #d9f5df; border: 1px solid #3da700; border-radius: 8px; color: #3da700; text-align: center;">
+      {{message}}
+    </div>
+  {%endfor%}
+<div class="eventcoloumn">
+  {% for event in events %}
+    <div class="eventcontainer">
+      <article class="eventcard">
+        <div class="tags">
+          {% for tag in event.Tag.all %}
+            <span class="tag">{{ tag.TagName }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="departments">
+          {% for Department in event.Department.all %}
+            <span class="department">{{ Department.DepName }}</span>
+          {% endfor %}
+        </div>
+
+        <h2>{{ event.EventTitle }}</h2>
+        <p class="meta">{{ event.Author }} | {{ event.Organization }}</p>
+        <p>{{ event.EventDesc }}</p>
+        <p>
+            {{ event.EventStartDate }} - {{ event.EventEndDate }} at {{ event.EventStartTime }} to {{ event.EventEndTime }}
+        </p>
+
+        {% if not user.is_authenticated %}
+        <p>You must be logged in to sign up for events.</p>
+
+          
+          {% else %}
+              {% csrf_token %}
+              <a href="{% url 'attend_event' event.Event_PublicationID %}">
+                <button type="button">Sign up</button>
+              </a>
+            </form>
+            <form action="{% url 'unattend_event' event.Event_PublicationID %}" method="post" style ="display: inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn-secondary">Cancel registration</button>
+            </form>
+          {% endif %}
+       
+
+        <h4>Participant: {{ event.attendees.count }}</h4>
+      </article>
+    </div>
+  {% endfor %}
+</div>
+
+<footer>
+  © 2025 Karlstads universitet – News & Events
+</footer>
+
+</body>
+</html>

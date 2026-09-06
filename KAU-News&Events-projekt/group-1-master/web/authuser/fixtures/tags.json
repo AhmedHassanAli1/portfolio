@@ -1,0 +1,51 @@
+[
+{
+  "model": "authuser.tag",
+  "pk": 1,
+  "fields": {
+    "TagName": "Studentpub"
+  }
+},
+{
+  "model": "authuser.tag",
+  "pk": 2,
+  "fields": {
+    "TagName": "Info-meeting"
+  }
+},
+{
+  "model": "authuser.tag",
+  "pk": 3,
+  "fields": {
+    "TagName": "Hotspot"
+  }
+},
+{
+  "model": "authuser.tag",
+  "pk": 4,
+  "fields": {
+    "TagName": "Sports"
+  }
+},
+{
+  "model": "authuser.tag",
+  "pk": 5,
+  "fields": {
+    "TagName": "Lecture"
+  }
+},
+{
+  "model": "authuser.tag",
+  "pk": 6,
+  "fields": {
+    "TagName": "Disputation"
+  }
+},
+{
+  "model": "authuser.tag",
+  "pk": 7,
+  "fields": {
+    "TagName": "Study-visit"
+  }
+}
+]

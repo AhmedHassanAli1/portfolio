@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static i18n wger_extras %}
+
+
+{% block title %}{% translate "About us" %}{% endblock %}
+
+{% block content %}
+    <p>
+        {% blocktranslate trimmed %}
+            This project is being managed by us six students from Karlstad University:
+        <ul>
+            <li>Tasneem Ajaj</li>
+            <li>Ahmed Hassan Ali</li>
+            <li>Anton Stridh</li>
+            <li>Linus Haag</li>
+            <li>Filip Lundin</li>
+            <li>Huthaifa Al Hedethe</li>
+        </ul>
+
+        {% endblocktranslate %}
+    </p>
+
+
+    <h5>
+        <span class="{% fa_class 'bug' %}"></span>
+        {% translate 'Have a problem or idea?' %}
+    </h5>
+    <p>{% translate "Get in touch if something didn't behave as expected or if there is a feature that you feel is missing." %}</p>
+    <a class="btn btn-outline-primary mb-5"
+       href="https://git.cs.kau.se/leoniway/group-02-dvgb20-vt-25/-/issues/new">https://git.cs.kau.se/leoniway/group-02-dvgb20-vt-25/-/issues/new</a>
+
+    <h5>
+        <span class="{% fa_class 'code' %}"></span>
+        {% translate 'Source code' %}
+    </h5>
+    <p>{% translate 'Look at the source code on gitlab' %}</p>
+    <a class="btn btn-outline-primary mb-5" href="https://git.cs.kau.se/leoniway/group-02-dvgb20-vt-25">https://git.cs.kau.se/leoniway/group-02-dvgb20-vt-25</a>
+
+
+
+
+{% endblock %}

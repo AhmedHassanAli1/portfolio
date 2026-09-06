@@ -1,0 +1,13 @@
+services:
+  tests:
+    build: .
+    environment:
+      PYTHONPATH: /app
+    volumes:
+      - ../web:/app/web
+      - .:/app/tests
+    command: ["pytest", "-v"]
+  redis:
+    image: "redis:alpine"
+  mongo:
+    image: "mongo"

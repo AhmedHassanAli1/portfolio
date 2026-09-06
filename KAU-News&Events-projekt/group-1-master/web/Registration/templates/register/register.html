@@ -1,0 +1,136 @@
+{% load static %}
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register - KAU News & Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; font-family: 'Nunito Sans', sans-serif; background-color: #ffffff; color: #000; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 2rem; background-color: #f0cf00; }
+    .logo-area { display: flex; align-items: center; gap: 1rem; }
+    header img { height: 40px; }
+    nav a { margin-left: 1rem; text-decoration: none; font-weight: 600; color: #000; }
+
+    .hero { text-align: center; padding: 2rem; }
+    .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .hero p { font-size: 1.1rem; color: #555; }
+
+    .signup-container { max-width: 500px; margin: 2rem auto; padding: 2rem; background: #fff; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #333; }
+
+    .signup-container input,
+    .signup-container select,
+    .signup-container textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+      background: #fff;
+      color: #000;
+    }
+    .signup-container input:focus,
+    .signup-container select:focus,
+    .signup-container textarea:focus { outline: none; border-color: #f0cf00; }
+
+    .errorlist { margin: 0.35rem 0 0; padding-left: 1rem; color: #b00020; font-size: 0.9rem; }
+    .nonfield-errors { background: #ffe5e5; border: 1px solid #ffb3b3; color: #7a0018; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; }
+
+    .signup-btn { width: 100%; padding: 0.875rem; background-color: #f0cf00; color: #000; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: background-color 0.2s; }
+    .signup-btn:hover { background-color: #dab800; }
+
+    .back-link { text-align: center; margin-top: 1rem; }
+    .back-link a { color: #555; text-decoration: none; }
+    .back-link a:hover { color: #000; }
+
+    footer { background-color: #f0cf00; text-align: center; padding: 1rem; font-size: 0.9rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <img src="{% static 'kau-logo.png' %}" style="width: 38px;" alt="KAU logo">
+  </div>
+  <nav>
+    <a href="{% url 'index' %}">News Feed</a>
+    <a href="{% url 'calendarevents_view' %}">Events Calendar</a>
+    <a href="{% url 'index4' %}">Log In</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Register</h1>
+  <p>Skapa ditt KAU News & Events-konto</p>
+</section>
+
+<main class="signup-container">
+  <form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="nonfield-errors">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="{{ form.fullname.id_for_label }}">Full name</label>
+      {{ form.fullname }}
+      {{ form.fullname.errors }}
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.email.id_for_label }}">E-mail</label>
+      {{ form.email }}
+      {{ form.email.errors }}
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.telephone.id_for_label }}">Telephone</label>
+      {{ form.telephone }}
+      {{ form.telephone.errors }}
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.username.id_for_label }}">Username </label>
+      {{ form.username }}
+      {{ form.username.errors }}
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.username.id_for_label }}">Organization (optional)</label>
+      {{ form.organization }}
+      {{ form.organization.errors }}
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.password1.id_for_label }}">Password</label>
+      {{ form.password1 }}
+      {{ form.password1.errors }}
+    </div>
+
+    <div class="form-group">
+      <label for="{{ form.password2.id_for_label }}">Confirm password</label>
+      {{ form.password2 }}
+      {{ form.password2.errors }}
+    </div>
+
+    <button type="submit" class="signup-btn">Register</button>
+  </form>
+
+  <div class="back-link">
+    <a href="{% url 'index' %}">← Back to main page</a>
+  </div>
+</main>
+
+<footer>
+  © 2025 Karlstads Universitet – News & Events
+</footer>
+
+</body>
+</html>

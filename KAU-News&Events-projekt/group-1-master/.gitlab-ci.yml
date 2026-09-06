@@ -1,0 +1,35 @@
+variables:
+  GROUPN: "1"
+  GROUP: "group-$GROUPN"
+  PROJECT: "softeng-2025-$GROUPN"
+  BASE_DIR: "/home/gitlab-runner/softeng"
+
+stages:
+  - test
+  - deploy
+
+test-job:
+  stage: test
+  tags:
+    - softeng-deploy
+  script:
+    - cd ./tests
+    - docker compose -p test-$PROJECT build
+    - docker compose -p test-$PROJECT run --rm tests
+  only:
+    - master
+
+build-job:
+  stage: deploy
+  tags: 
+    - softeng-deploy
+  script:
+    - if [ -d "$WEB_DIR" ]; then cd "$WEB_DIR" && docker compose -p deploy-$PROJECT stop || true; fi
+    - mkdir -p /tmp/group1-postgres
+    - mkdir -p $BASE_DIR/$GROUP/
+    - rm -rf $BASE_DIR/$GROUP/*
+    - rsync -aP --exclude 'data/' ./ $BASE_DIR/$GROUP/
+    - cd $BASE_DIR/$GROUP/web/
+    - docker compose -p deploy-$PROJECT up -d --build
+  only:
+    - master

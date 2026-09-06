@@ -1,0 +1,6 @@
+# Lokala miljöfiler med hemligheter - checka aldrig in de riktiga .env-filerna
+docker/dev/.env
+docker/dev-postgres/.env
+
+# OS
+.DS_Store

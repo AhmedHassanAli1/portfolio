@@ -1,0 +1,424 @@
+{% load static %}
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>KAU News & Events</title>
+
+  <!-- Nunito Sans font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito Sans', sans-serif;
+      background-color: #ffffff;
+      color: #000;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      background-color: #f0cf00;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #000;
+    }
+
+    /* Hero / Title section */
+    .hero {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* Filter*/
+    .filters {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .filters input,
+    .filters select, select{
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+
+    /* Cards*/
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 0;
+      width: 80%;
+    }
+
+    .card h2 {
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+
+    .eventcard,
+    .newscard {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      width: 80%;
+      min-width: 350px;
+    }
+
+    .tags {
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f0cf00;
+      color: #000;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      margin-right: 0.25rem;
+    }
+
+    .departments {
+      margin-bottom: 1rem;
+    }
+    .department {
+      display: inline-block;
+      background: #00ccf0;
+      color: #000;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      margin-right: 0.25rem;
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: #f0cf00;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    details {
+  border: 1px solid #767676;
+  border-radius: 3px;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 3px 6px;
+}
+.details_departments summary::marker {
+  display: none;
+  font-size: 0;
+}
+
+
+.details_departments summary::after {
+  content: "\25BC" / "";
+  display: inline-block;
+  font-size: 0.6rem;
+  height: 1rem;
+  line-height: 1rem;
+  margin-left: 0.5rem;
+  position: relative;
+  transition: transform 0.25s;
+}
+
+.details_departments[open] summary {
+  margin-bottom: 1rem;
+}
+
+.details_departments > summary {
+  list-style: none;
+}
+.details_departments > summary::marker {
+  display: none;
+}
+.details_departments div {
+ position: absolute;
+}
+
+.details_departments[open] summary::after {
+  top: -0.15rem;
+  transform: rotate(180deg);
+}
+
+
+fieldset {
+  display: flex;
+  border: 0;
+  padding: 0;
+  width: 100%;
+}
+
+fieldset legend {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border-style: solid;
+  border-radius: 1px;
+  border-color: #555;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+ul li {
+  border-radius: 3px;
+  margin: 0;
+  padding: 4px 2px;
+  background: #fff;
+}
+
+ul li:hover {
+  background: #eee;
+}
+
+ul li label {
+  flex-grow: 0;
+  justify-content: space-between;
+}
+.hidden {
+  display: none;
+}
+img {
+  width: 100%;
+  max-width: 600px;
+}
+
+button {
+      background: #f0cf00;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #e5c700;
+    }
+  
+    .btn-secondary {
+      background: #ccc;
+      color: #000;
+    }
+    .rec-text{
+      color: forestgreen;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <img src="{% static 'kau-logo.png' %} " style="width: 38px;">
+    <!--<img src="example-logo.png" alt="Example Logo"-->
+  </div>
+  <nav>
+    <a href="{% url 'index' %}">News Feed</a>
+    
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'publication_events' %}">Publish Event</a>
+    <a href="{% url 'publication_news' %}">Publish News</a>
+    <a href="{% url 'logout' %}">Log out </a>
+    {% else %}
+    <a href="{% url 'login' %}">Log in </a>
+    {% endif %}
+    {% if user.is_staff %}
+    <a href="{% url 'staffuser' %}">Publisher overview</a>
+    {% endif %}
+
+    {% if user.is_superuser %}
+    <a href="{% url 'admin:index' %}">Admin view</a>
+    {% endif %}
+    
+  
+    
+
+    
+
+    
+
+  </nav>
+</header>
+
+<section class="hero">
+    <h1>News/Event</h1>
+</section>
+{%if messages%}
+  {%for message in messages%}
+    <div style="max-width: 500px; margin: 0 auto; padding: 1rem; background-color: #d9f5df; border: 1px solid #3da700; border-radius: 8px; color: #3da700; text-align: center;">
+      {{message}}
+    </div>
+  {%endfor%}
+{%endif%}
+<main class="container">
+  <!-- exemple -->
+  
+
+  {% if type == "news" %}
+    <article class="newscard">
+      <h2>{{entry.NewsTitle}}</h2>
+      <p class = "meta">{{entry.Author}} | {{entry.Organization}}</p>
+      <p>{{entry.NewsDesc}}</p>
+    </article>
+  {% elif type == "event" %}
+    <article class="eventcard"> 
+          <h2>{{entry.EventTitle}}</h2>
+          <p class = "meta">{{entry.Organization}}</p>
+          <p>{{entry.EventDesc}}</p>
+          <p>{{entry.EventStartDate}} - {{entry.EventEndDate}}</p> 
+          <p>{{entry.EventStartTime}} - {{entry.EventEndTime}}</p> 
+          {% if entry.is_recurring %}
+            <div class="card">
+              <h3 class="rec-text"> &#8634; Recurring</h3>
+              {% if rec_event %}
+              <p><b>Recurrence:</b> {{rec_event.get_rrule_as_text}}</p>
+              <p> <b>Last recurrence: </b>{{rec_event.get_last_recurrence}}</p>
+              <div><b>Coming recurrences:</b></div>
+              {% for entry in rec_event.get_next_recurrences %}
+              <div>{{entry}}</div>
+              {% endfor %}
+              {% endif %}
+            </div>
+          {% endif%}
+          <p> </p>
+          {% if not user.is_authenticated %}
+          <p>You must be logged in to sign up for events.</p>
+        
+        {% else %}
+              <!-- Anmälan-->
+          <a href="{% url 'attend_event' entry.Event_PublicationID %}" method="post">
+            {% csrf_token %}
+                  <button type="button">Sign Up</button>
+                  <!-- Avanmälan-->
+                  <form action="{% url 'unattend_event' entry.Event_PublicationID %}" method="post" style ="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn-secondary">Cancel registration</button>
+          </form>
+                </a>  
+        {% endif %}
+    </article>
+  {% endif %}
+
+  <article class="card">
+    <span><b>Files:</b></span>
+    {%for file in files%}
+      <a href="{% get_media_prefix %}{{file.File}}" download>{{file.filename}}, </a>
+    {%endfor%}
+  </article>
+  <article class="card">
+    <div><b>Images</b></div>
+    {%for file in files%}
+      {% if file.is_image %}
+      <div>{{file.filename}}</div>
+      <img src="{% get_media_prefix %}{{file.File}}">
+      {% endif %}
+    {%endfor%}
+  </article>
+
+{% if type == "event"%}
+  {% if user.username == entry.Username or user.is_staff%}
+  {% csrf_token %}
+  <a href="{% url 'att_list' entry.Event_PublicationID %}">
+    <button type="button">Attendance list</button>
+  </a>
+  {% csrf_token %}
+  {% endif %}
+{% endif %}
+
+{%if type == 'event'%}
+  {% if user.is_staff%}
+  <form method="POST" action="{% url 'delete_publication' entry.Event_PublicationID %}?type=event">
+  {% csrf_token %}
+    <button type="submit">Delete Event</button>
+  </form>
+    {% endif %}
+{%endif%}
+
+{%if type == 'news'%}
+  {% if user.is_staff%}
+  <form method="POST" action="{% url 'delete_publication' entry.News_PublicationID %}?type=news">
+    {% csrf_token %}
+    <button type="submit">Delete News</button>
+  </form>
+  {% endif %}
+{%endif%}
+
+ 
+</main>
+
+<footer>
+  © 2025 Karlstads Universitet – News & Events
+</footer>
+
+</body>
+</html>

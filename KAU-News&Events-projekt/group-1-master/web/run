@@ -1,0 +1,38 @@
+#!/bin/bash
+# Bash script for easily entering common commands
+# Example: "./run web" to go into the container "web"
+
+if [ "$1" = "web" ]; then
+    echo "Entering web container"
+    docker exec -it deploy-softeng-2025-1-web /bin/bash
+
+elif [ "$1" = "postgres" ]; then
+    echo "Entering postgres container"
+    docker exec -it deploy-softeng-2025-1-postgres /bin/bash
+
+elif [ "$1" = "fixtures" ]; then 
+    # Loads django fixtures to database, only use when in container "web"
+    echo "Loading fixtures"
+    python manage.py loaddata */fixtures/*.json
+elif [ "$1" = "migrate" ]; then
+    echo "Migrating"
+    python manage.py makemigrations
+    python manage.py migrate
+elif [ "$1" = "reset" ]; then
+    if [ "$2" = "--no-input" ]; then
+        echo "Resetting database"
+        python manage.py flush --no-input
+        ./run fixtures
+    else
+        echo "Resetting database"
+        python manage.py flush
+        ./run fixtures
+    fi
+elif [ "$1" = "dumpdata" ]; then
+    FLAGS="--indent 2"
+    echo "Dumping current data into fixtures"
+    python manage.py dumpdata authuser.CustomUser $FLAGS > authuser/fixtures/users.json
+    python manage.py dumpdata Publication $FLAGS > Publication/fixtures/publication.json
+    python manage.py dumpdata authuser.Department $FLAGS > authuser/fixtures/departments.json
+    python manage.py dumpdata authuser.Tag $FLAGS > authuser/fixtures/tags.json
+fi

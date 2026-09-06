@@ -1,0 +1,254 @@
+{% load static %}
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Publish News - KAU News & Events</title>
+
+  <!-- Nunito Sans font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito Sans', sans-serif;
+      background-color: #ffffff;
+      color: #000;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      background-color: #f0cf00;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    header img { height: 40px; }
+
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .hero { text-align: center; padding: 2rem; }
+    .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .hero p  { font-size: 1.1rem; color: #555; }
+
+    .publish-container {
+      max-width: 640px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .form-subtitle {
+      margin-top: -0.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+      background: #fff;
+      color: #000;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #f0cf00;
+    }
+
+    .form-news textarea {
+      min-height: 140px;       
+      resize: vertical;
+      line-height: 1.4;
+    }
+
+    .publish-btn {
+      width: 100%;
+      padding: 0.875rem;
+      background-color: #f0cf00;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background-color 0.2s;
+    }
+
+    .publish-btn:hover { background-color: #dab800; }
+
+    .back-link { text-align: center; margin-top: 1rem; }
+    .back-link a { color: #555; text-decoration: none; }
+    .back-link a:hover { color: #000; }
+
+    footer {
+      background-color: #f0cf00;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .details-departments {
+      margin-bottom: 1.5rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      background: #fafafa;
+    }
+
+    @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <img src="{% static 'kau-logo.png' %}" alt="KAU logo" style="width: 38px;">
+  </div>
+  <nav>
+    <a href="{% url 'index' %}">News Feed</a>
+    <a href="{% url 'calendarevents_view' %}">Events Calendar</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Publish News</h1>
+  <p>Publish your KAU News &amp; Events</p>
+</section>
+
+<main class="publish-container">
+  {%if messages%}
+  {%for message in messages%}
+    <div style="max-width: 500px; margin: 0 auto; padding: 1rem; background-color: #ffdddd; border: 1px solid #ff5c5c; border-radius: 8px; color: #a70000; text-align: center;">
+      {{message}}
+    </div>
+  {%endfor%}
+{%endif%}
+  <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="row">
+      <div class="form-group">
+        <label for="{{ news_form.NewsAuthor.id_for_Label }}">Full name</label>
+        {{ news_form.Author }}
+        {{ news_form.Author.errors }}
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="{{ news_form.Email.id_for_Label }}">E-mail address</label>
+          {{ news_form.Email }}
+          {{ news_form.Email.errors }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ news_form.Organization.id_for_Label }}">Organization</label>
+          {{ news_form.Organization }}
+          {{ news_form.Organization.errors }}
+        </div>
+      </div>
+    
+
+     <!-- eventtitel -->
+     <div class="form-group">
+      <label for="{{ news_form.NewsTitle.id_for_Label }}">Title</label>
+     {{ news_form.NewsTitle }}
+     {{ news_form.NewsTitle.errors }}
+      <div class="form-subtitle">Max 100 characters</div>
+    </div>
+
+    <div class="form-group form-event">
+      <label for="{{ news_form.NewsDesc.id_for_Label }}">News information</label>
+      {{ news_form.NewsDesc }}
+      {{ news_form.NewsDesc.errors }}
+    </div>
+
+    <details class="details-departments">
+      <summary>Choose departments to publish to</summary>
+      <fieldset>
+        <legend>Departments</legend>
+            <label for="{{ news_form.Department.id_for_label }}"></label>
+            {{ news_form.Department }}
+            {{ news_form.Department.errors }}
+      </fieldset>
+    </details>
+       
+
+
+    <details class="details-departments">
+      <summary>Choose departments to tags to</summary>
+      <fieldset>
+        <legend>Tags</legend>
+          <label for="{{ news_form.Tag.id_for_label }}"></label>
+          {{ news_form.Tag }}
+          {{ news_form.Tag.errors }}
+      </fieldset>
+    </details>
+    </div>
+      <div class="form-group">
+        <label for="{{ files_form.id_for_Label }}">News Files</label>
+        {{ files_form.files }}
+        {{ files_form.files.errors }}
+      </div>
+
+   
+    <button type="submit" class="publish-btn">Request publication of news</button>
+  </form>
+
+  <div class="back-link">
+    <a href="{% url 'index' %}">← Back to main website</a>
+  </div>
+</main>
+
+<footer>
+  © 2025 Karlstads Universitet – News &amp; Events
+</footer>
+
+</body>
+</html>

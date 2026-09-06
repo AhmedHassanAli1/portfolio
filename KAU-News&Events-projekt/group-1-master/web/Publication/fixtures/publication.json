@@ -1,0 +1,346 @@
+[
+{
+  "model": "Publication.publication_event",
+  "pk": 1,
+  "fields": {
+    "Author": "Misty Melendez",
+    "Username": "mistymelendezsituation",
+    "EventTitle": "Student pup at Voyage Limited!",
+    "EventDesc": "Student pup at Voyage Limited office for all students studying math, computer science, and music!\r\n\r\nMake sure to include allergi information when signing up!",
+    "EventStartDate": "2025-11-20",
+    "EventStartTime": "17:00:00",
+    "EventEndDate": "2025-11-20",
+    "EventEndTime": "23:45:00",
+    "PublicationDate": "2025-11-04",
+    "Email": "email@email.com",
+    "Organization": "Voyage Limited",
+    "EventLocation": "Voyage Limited, Hälsingvägen 36",
+    "is_approved": false,
+    "is_recurring": false,
+    "Department": [
+      1,
+      2,
+      4
+    ],
+    "Tag": [
+      1
+    ],
+    "CustomUser": []
+  }
+},
+{
+  "model": "Publication.publication_event",
+  "pk": 2,
+  "fields": {
+    "Author": "Vilma Noble",
+    "Username": "vilmanobleseahorse",
+    "EventTitle": "Voidcloud Company Lectures",
+    "EventDesc": "We at Voidcloud will be holding company lectures every monday in this december! This will be relevant for students studying economics and history.\r\n\r\nTake this opportunity to become more educated! Some snacks will also be served!",
+    "EventStartDate": "2025-12-01",
+    "EventStartTime": "18:00:00",
+    "EventEndDate": "2025-12-01",
+    "EventEndTime": "20:00:00",
+    "PublicationDate": "2025-11-04",
+    "Email": "email@email.com",
+    "Organization": "Voidcloud",
+    "EventLocation": "Voidcloud, Trofastvägen 77, Karlstad",
+    "is_approved": false,
+    "is_recurring": true,
+    "Department": [
+      5,
+      6
+    ],
+    "Tag": [
+      5
+    ],
+    "CustomUser": []
+  }
+},
+{
+  "model": "Publication.publication_event",
+  "pk": 3,
+  "fields": {
+    "Author": "Donte Meadows",
+    "Username": "gaspdontemeadows",
+    "EventTitle": "Delugation Annual Sports Event!",
+    "EventDesc": "Welcome to Delugation's annual sports event!\r\n\r\nThe event is split into 3 parts and takes place during the first 7 days of june, july, and august.\r\n\r\nSee you there!",
+    "EventStartDate": "2026-06-01",
+    "EventStartTime": "00:00:00",
+    "EventEndDate": "2026-06-07",
+    "EventEndTime": "23:45:00",
+    "PublicationDate": "2025-11-04",
+    "Email": "email@email.com",
+    "Organization": "Delugation",
+    "EventLocation": "Hövdingsvägen 60, Karlstad",
+    "is_approved": false,
+    "is_recurring": true,
+    "Department": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "Tag": [
+      4
+    ],
+    "CustomUser": []
+  }
+},
+{
+  "model": "Publication.publication_event",
+  "pk": 4,
+  "fields": {
+    "Author": "Anthony Hull",
+    "Username": "readinganthonyhull",
+    "EventTitle": "Bulltechs Study-visit opening!",
+    "EventDesc": "Hello! We at Bulltechs would like to welcome some students for a study-visit. \r\n\r\nYou will get the opportunity to visit our office and get some insight into how we work. Lunch is included for free.",
+    "EventStartDate": "2025-12-10",
+    "EventStartTime": "10:00:00",
+    "EventEndDate": "2025-12-12",
+    "EventEndTime": "14:00:00",
+    "PublicationDate": "2025-11-04",
+    "Email": "email@email.com",
+    "Organization": "Bulltechs",
+    "EventLocation": "Hultekvägen 37, Karlstad",
+    "is_approved": false,
+    "is_recurring": false,
+    "Department": [
+      1,
+      2
+    ],
+    "Tag": [
+      7
+    ],
+    "CustomUser": []
+  }
+},
+{
+  "model": "Publication.publication_event",
+  "pk": 5,
+  "fields": {
+    "Author": "Cecelia Warren",
+    "Username": "hangceceliawarren",
+    "EventTitle": "Student Music Playings!",
+    "EventDesc": "We will be having some christmas music in Aula Magna. Come and check it out!\r\n\r\nMerry christmas!",
+    "EventStartDate": "2025-12-15",
+    "EventStartTime": "18:00:00",
+    "EventEndDate": "2025-12-15",
+    "EventEndTime": "21:00:00",
+    "PublicationDate": "2025-11-04",
+    "Email": "email@email.com",
+    "Organization": "KAU",
+    "EventLocation": "Aula Magna, Karlstads Universitet",
+    "is_approved": false,
+    "is_recurring": true,
+    "Department": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "Tag": [
+      5
+    ],
+    "CustomUser": []
+  }
+},
+{
+  "model": "Publication.publication_event",
+  "pk": 6,
+  "fields": {
+    "Author": "Virgil Peterson",
+    "Username": "Virgil-Peterson5$JQgk",
+    "EventTitle": "Christmas Student Hunting!",
+    "EventDesc": "The annual KAU student hunting period!\r\n\r\nStudents try to survive while we hunt them. Good luck!",
+    "EventStartDate": "2025-12-01",
+    "EventStartTime": "00:00:00",
+    "EventEndDate": "2025-12-14",
+    "EventEndTime": "23:45:00",
+    "PublicationDate": "2025-11-04",
+    "Email": "email@email.com",
+    "Organization": "KAU",
+    "EventLocation": "Karlstad's University",
+    "is_approved": false,
+    "is_recurring": true,
+    "Department": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "Tag": [
+      4
+    ],
+    "CustomUser": []
+  }
+},
+{
+  "model": "Publication.recurringevent",
+  "pk": 1,
+  "fields": {
+    "event": 2,
+    "rrule": "rrule(freq=WEEKLY,interval=1,dtstart=datetime(2025, 12, 1, 18, 0),until=datetime(2026, 1, 1, 0, 0),)",
+    "freq": 2,
+    "interval": 1,
+    "dtstart": "2025-12-01",
+    "duration": "02:00:00",
+    "count": null,
+    "until": "2026-01-01",
+    "bymonth": "[]",
+    "bymonthday": "[]",
+    "byyearday": "[]",
+    "byweekno": "[]",
+    "byweekday": "[]",
+    "weekday_byday": "[\"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\"]"
+  }
+},
+{
+  "model": "Publication.recurringevent",
+  "pk": 2,
+  "fields": {
+    "event": 3,
+    "rrule": "rrule(freq=YEARLY,interval=1,dtstart=datetime(2026, 6, 1, 0, 0),bymonth=(6,7,8,),)",
+    "freq": 4,
+    "interval": 1,
+    "dtstart": "2026-06-01",
+    "duration": "6 23:45:00",
+    "count": null,
+    "until": null,
+    "bymonth": "[\"6\", \"7\", \"8\"]",
+    "bymonthday": "[]",
+    "byyearday": "[]",
+    "byweekno": "[]",
+    "byweekday": "[]",
+    "weekday_byday": "[\"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\"]"
+  }
+},
+{
+  "model": "Publication.recurringevent",
+  "pk": 3,
+  "fields": {
+    "event": 5,
+    "rrule": "rrule(freq=DAILY,interval=1,dtstart=datetime(2025, 12, 15, 18, 0),count=6,)",
+    "freq": 1,
+    "interval": 1,
+    "dtstart": "2025-12-15",
+    "duration": "03:00:00",
+    "count": 6,
+    "until": null,
+    "bymonth": "[]",
+    "bymonthday": "[]",
+    "byyearday": "[]",
+    "byweekno": "[]",
+    "byweekday": "[]",
+    "weekday_byday": "[\"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\"]"
+  }
+},
+{
+  "model": "Publication.recurringevent",
+  "pk": 4,
+  "fields": {
+    "event": 6,
+    "rrule": "rrule(freq=YEARLY,interval=1,dtstart=datetime(2025, 12, 1, 0, 0),)",
+    "freq": 4,
+    "interval": 1,
+    "dtstart": "2025-12-01",
+    "duration": "13 23:45:00",
+    "count": null,
+    "until": null,
+    "bymonth": "[]",
+    "bymonthday": "[]",
+    "byyearday": "[]",
+    "byweekno": "[]",
+    "byweekday": "[]",
+    "weekday_byday": "[\"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\", \"0\"]"
+  }
+},
+{
+  "model": "Publication.publication_news",
+  "pk": 1,
+  "fields": {
+    "Author": "Håkan Löfvgrenstensson",
+    "NewsTitle": "Snart studentpub",
+    "NewsDesc": "Trädgårdsmästarna Karlstad kommer att lägga hålla i en studentpub snart! Håll utgick i events!",
+    "PublicationDate": "2025-10-08",
+    "Email": "haklovf@stockholm.com",
+    "Organization": "Trädgårdsmästarna Karlstad",
+    "is_approved": false,
+    "Department": [
+      1
+    ],
+    "Tag": [
+      1
+    ]
+  }
+},
+{
+  "model": "Publication.publication_news",
+  "pk": 2,
+  "fields": {
+    "Author": "Bernie Macias",
+    "NewsTitle": "Upcoming Music",
+    "NewsDesc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,",
+    "PublicationDate": "2025-11-04",
+    "Email": "email@email.com",
+    "Organization": "Bumblebee Records",
+    "is_approved": false,
+    "Department": [
+      4
+    ],
+    "Tag": [
+      5
+    ]
+  }
+},
+{
+  "model": "Publication.publication_news",
+  "pk": 3,
+  "fields": {
+    "Author": "Mable Vega",
+    "NewsTitle": "Exciting News!",
+    "NewsDesc": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere",
+    "PublicationDate": "2025-11-04",
+    "Email": "email@email.com",
+    "Organization": "Freacrosystems",
+    "is_approved": false,
+    "Department": [
+      5,
+      6
+    ],
+    "Tag": [
+      3,
+      6
+    ]
+  }
+},
+{
+  "model": "Publication.publication_news",
+  "pk": 4,
+  "fields": {
+    "Author": "Minh Brennan",
+    "NewsTitle": "Library Deals!",
+    "NewsDesc": "New deals for books during winter season. Get 30 % select titles!",
+    "PublicationDate": "2025-11-04",
+    "Email": "email@email.com",
+    "Organization": "Apachebooks",
+    "is_approved": false,
+    "Department": [
+      2,
+      6
+    ],
+    "Tag": [
+      6,
+      7
+    ]
+  }
+}
+]

@@ -1,0 +1,8 @@
+#!/bin/bash
+# Bash script for easily entering common commands
+# Example: "./run web" to go into the container "web"
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py loaddata */fixtures/*.json
+python manage.py runserver 0.0.0.0:8001
